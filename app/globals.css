@@ -331,12 +331,16 @@ body {
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   color: #2c2925;
+  font-size: 1.125rem; /* text-lg equivalent - 18px */
+  padding: 0.875rem 1rem; /* py-3.5 px-4 */
 }
 
 .dark .modern-input {
   background: rgba(38, 38, 38, 0.95);
   border: 2px solid rgba(64, 64, 64, 0.6);
   color: #fafafa;
+  font-size: 1.125rem; /* text-lg equivalent - 18px */
+  padding: 0.875rem 1rem; /* py-3.5 px-4 */
 }
 
 .modern-input:focus {

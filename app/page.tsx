@@ -46,7 +46,7 @@ export default function DefiLendingPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <VideoBackground
-        src="/api/placeholder/1920/1080"
+        src="/home.mp4"
         overlay="light"
         className="absolute inset-0 z-0"
       />
@@ -68,19 +68,19 @@ export default function DefiLendingPage() {
           <nav className="hidden md:flex items-center gap-6">
             <button
               onClick={() => scrollToSection("benefits")}
-              className="text-sm hover:text-blue-600 transition-colors font-medium text-stone-700 dark:text-stone-300"
+              className="text-base hover:text-blue-600 transition-colors font-medium text-stone-700 dark:text-stone-300"
             >
               Benefits
             </button>
             <button
               onClick={() => scrollToSection("requirements")}
-              className="text-sm hover:text-blue-600 transition-colors font-medium text-stone-700 dark:text-stone-300"
+              className="text-base hover:text-blue-600 transition-colors font-medium text-stone-700 dark:text-stone-300"
             >
               Requirements
             </button>
             <button
               onClick={() => scrollToSection("register")}
-              className="text-sm hover:text-blue-600 transition-colors font-medium text-stone-700 dark:text-stone-300"
+              className="text-base hover:text-blue-600 transition-colors font-medium text-stone-700 dark:text-stone-300"
             >
               Get Started
             </button>
@@ -184,12 +184,12 @@ export default function DefiLendingPage() {
           <FadeInSection className="text-center mb-12">
             <TypewriterText 
               text="Why Choose Kredi?" 
-              className="text-3xl md:text-4xl font-bold mb-4 text-stone-800 dark:text-stone-100"
+              className="text-4xl md:text-5xl font-bold mb-4 text-stone-800 dark:text-stone-100"
               delay={0.2}
               speed={0.05}
             />
             <AnimatedText direction="up" delay={0.8}>
-              <p className="text-xl text-stone-600 dark:text-stone-300">
+              <p className="text-2xl text-stone-600 dark:text-stone-300">
                 Experience the future of lending with blockchain-powered transparency
               </p>
             </AnimatedText>
@@ -250,8 +250,8 @@ export default function DefiLendingPage() {
                     >
                       <benefit.icon className={`h-8 w-8 text-${benefit.color}-600 dark:text-${benefit.color}-400`} />
                     </motion.div>
-                    <h3 className="font-semibold mb-2 text-stone-800 dark:text-stone-100">{benefit.title}</h3>
-                    <p className="text-sm text-stone-600 dark:text-stone-300">
+                    <h3 className="font-semibold mb-2 text-lg text-stone-800 dark:text-stone-100">{benefit.title}</h3>
+                    <p className="text-base text-stone-600 dark:text-stone-300">
                       {benefit.description}
                     </p>
                   </CardContent>
@@ -262,14 +262,43 @@ export default function DefiLendingPage() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-gradient-to-br from-stone-50 to-stone-100 dark:from-stone-900/20 dark:to-stone-800/20">
-        <div className="container mx-auto max-w-6xl">
+      <motion.section 
+        className="py-16 px-4 bg-gradient-to-br from-stone-50 to-stone-100 dark:from-stone-900/20 dark:to-stone-800/20 relative overflow-hidden"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+      >
+        {/* Video de fondo directo para debugging */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute top-0 left-0 w-full h-full object-cover opacity-40 dark:opacity-30"
+            style={{ filter: "brightness(0.8) contrast(1.1)" }}
+            onLoadStart={() => console.log("Video loading started")}
+            onCanPlay={() => console.log("Video can play")}
+            onError={(e) => console.error("Video error:", e)}
+          >
+            <source src="/upsis.mp4" type="video/mp4" />
+            <source src="/home.mp4" type="video/mp4" />
+            {/* Fallback visible para debugging */}
+            Tu navegador no soporta el elemento video.
+          </video>
+          {/* Fallback background si el video no carga */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-pink-500/20 dark:from-blue-400/30 dark:via-purple-400/20 dark:to-pink-400/30"></div>
+        </div>
+        {/* Overlay adicional para mejor legibilidad con efecto glassmorphism */}
+        <div className="absolute inset-0 bg-gradient-to-br from-stone-50/30 via-stone-100/10 to-stone-200/20 dark:from-stone-900/30 dark:via-stone-800/10 dark:to-stone-700/20 backdrop-blur-[0.5px] z-5"></div>
+        <div className="container mx-auto max-w-6xl relative z-10">
           <FadeInSection className="text-center mb-16">
             <AnimatedText direction="up">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-stone-800 dark:text-stone-100">Our Value Proposition</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-stone-800 dark:text-stone-100">Our Value Proposition</h2>
             </AnimatedText>
             <AnimatedText direction="up" delay={0.3}>
-              <p className="text-xl text-stone-600 dark:text-stone-300">
+              <p className="text-2xl text-stone-600 dark:text-stone-300">
                 Six key benefits that make Kredi the future of lending
               </p>
             </AnimatedText>
@@ -338,8 +367,8 @@ export default function DefiLendingPage() {
                     >
                       {item.icon}
                     </motion.div>
-                    <h3 className="font-bold mb-3 text-lg text-stone-800 dark:text-stone-100">{item.title}</h3>
-                    <p className="text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
+                    <h3 className="font-bold mb-3 text-xl text-stone-800 dark:text-stone-100">{item.title}</h3>
+                    <p className="text-base text-stone-600 dark:text-stone-300 leading-relaxed">
                       {item.description}
                     </p>
                   </CardContent>
@@ -374,16 +403,16 @@ export default function DefiLendingPage() {
             </motion.div>
           </FadeInSection>
         </div>
-      </section>
+      </motion.section>
 
       <section id="requirements" className="py-20 px-4 requirements-section bg-transparent dark:bg-gray-900/50">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="text-center mb-16">
             <AnimatedText direction="up">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-stone-800 dark:text-stone-100">Requirements for Your First Loan</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-stone-800 dark:text-stone-100">Requirements for Your First Loan</h2>
             </AnimatedText>
             <AnimatedText direction="up" delay={0.3}>
-              <p className="text-xl text-stone-600 dark:text-stone-300 max-w-2xl mx-auto">
+              <p className="text-2xl text-stone-600 dark:text-stone-300 max-w-2xl mx-auto">
                 Simple and transparent steps to get started with Kredi lending - build your reputation step by step
               </p>
             </AnimatedText>
@@ -404,7 +433,7 @@ export default function DefiLendingPage() {
                       </motion.div>
                       <h3 className="text-xl font-bold mb-4 text-stone-800 dark:text-stone-100 min-h-[3rem] flex items-center">3 Months Activity</h3>
                     </div>
-                    <p className="text-stone-600 dark:text-stone-300 leading-relaxed flex-1 flex items-center">
+                    <p className="text-base text-stone-600 dark:text-stone-300 leading-relaxed flex-1 flex items-center">
                       Build your reputation with Kredi through consistent platform engagement and transactions
                     </p>
                   </CardContent>
@@ -426,7 +455,7 @@ export default function DefiLendingPage() {
                       </motion.div>
                       <h3 className="text-xl font-bold mb-4 text-stone-800 dark:text-stone-100 min-h-[3rem] flex items-center">Diversified Transactions</h3>
                     </div>
-                    <p className="text-stone-600 dark:text-stone-300 leading-relaxed flex-1 flex items-center">
+                    <p className="text-base text-stone-600 dark:text-stone-300 leading-relaxed flex-1 flex items-center">
                       Multiple platform interactions help Kredi evaluate your creditworthiness and reliability
                     </p>
                   </CardContent>
@@ -448,7 +477,7 @@ export default function DefiLendingPage() {
                       </motion.div>
                       <h3 className="text-xl font-bold mb-4 text-stone-800 dark:text-stone-100 min-h-[3rem] flex items-center">Start Small</h3>
                     </div>
-                    <p className="text-stone-600 dark:text-stone-300 leading-relaxed flex-1 flex items-center">
+                    <p className="text-base text-stone-600 dark:text-stone-300 leading-relaxed flex-1 flex items-center">
                       Begin with micro-loans from Kredi to build trust and progressively unlock larger amounts
                     </p>
                   </CardContent>
@@ -470,7 +499,7 @@ export default function DefiLendingPage() {
                       </motion.div>
                       <h3 className="text-xl font-bold mb-4 text-stone-800 dark:text-stone-100 min-h-[3rem] flex items-center">Identity Verification</h3>
                     </div>
-                    <p className="text-stone-600 dark:text-stone-300 leading-relaxed flex-1 flex items-center">
+                    <p className="text-base text-stone-600 dark:text-stone-300 leading-relaxed flex-1 flex items-center">
                       Complete KYC and liveness verification for security and regulatory compliance
                     </p>
                   </CardContent>
@@ -523,10 +552,10 @@ export default function DefiLendingPage() {
         <div className="container mx-auto max-w-2xl">
           <FadeInSection className="text-center mb-12">
             <AnimatedText direction="up">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-stone-800 dark:text-stone-100">Start Building Your Reputation</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-stone-800 dark:text-stone-100">Start Building Your Reputation</h2>
             </AnimatedText>
             <AnimatedText direction="up" delay={0.3}>
-              <p className="text-xl text-stone-600 dark:text-stone-300">
+              <p className="text-2xl text-stone-600 dark:text-stone-300">
                 Join Kredi's lending community and take control of your financial future
               </p>
             </AnimatedText>
@@ -557,7 +586,7 @@ export default function DefiLendingPage() {
                       {errors.name && (
                         <motion.p 
                           id="name-error" 
-                          className="text-sm text-red-600 mt-1" 
+                          className="text-base text-red-600 mt-1" 
                           aria-live="polite"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
@@ -584,7 +613,7 @@ export default function DefiLendingPage() {
                       {errors.email && (
                         <motion.p 
                           id="email-error" 
-                          className="text-sm text-destructive mt-1" 
+                          className="text-base text-destructive mt-1" 
                           aria-live="polite"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
@@ -604,8 +633,8 @@ export default function DefiLendingPage() {
                       <div className="flex items-start gap-3">
                         <Shield className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                         <div>
-                          <h3 className="font-semibold text-sm mb-1 text-gray-800 dark:text-gray-100">Your information is secure</h3>
-                          <p className="text-xs text-gray-600 dark:text-gray-300">
+                          <h3 className="font-semibold text-base mb-1 text-gray-800 dark:text-gray-100">Your information is secure</h3>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">
                             Your wallet is self-custodied and your data is encrypted. We never have access to your
                             private keys.
                           </p>
@@ -652,14 +681,14 @@ export default function DefiLendingPage() {
                 </div>
                 <span className="font-bold trust-gradient">Kredi</span>
               </div>
-              <p className="text-sm text-gray-400">
+              <p className="text-base text-gray-400">
                 Kredi's micro-lending powered by community trust and blockchain transparency.
               </p>
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4 text-white">Legal</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h3 className="font-semibold mb-4 text-lg text-white">Legal</h3>
+              <ul className="space-y-2 text-base text-gray-400">
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
                     Privacy Policy
@@ -674,8 +703,8 @@ export default function DefiLendingPage() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4 text-white">Community</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h3 className="font-semibold mb-4 text-lg text-white">Community</h3>
+              <ul className="space-y-2 text-base text-gray-400">
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
                     Discord
@@ -695,8 +724,8 @@ export default function DefiLendingPage() {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-4 text-white">Support</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h3 className="font-semibold mb-4 text-lg text-white">Support</h3>
+              <ul className="space-y-2 text-base text-gray-400">
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
                     Help Center
@@ -711,7 +740,7 @@ export default function DefiLendingPage() {
             </div>
           </div>
 
-          <div className="border-t border-slate-700 mt-8 pt-8 text-center text-sm text-gray-400">
+          <div className="border-t border-slate-700 mt-8 pt-8 text-center text-base text-gray-400">
             <p>&copy; 2024 Kredi. All rights reserved. Built on blockchain for transparency and trust.</p>
           </div>
         </div>
