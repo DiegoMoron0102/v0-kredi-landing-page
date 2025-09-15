@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Shield, Users, Clock, Wallet, Activity, UserCheck } from "lucide-react"
 import { VideoBackground } from "@/components/video-background"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { AnimatedText, TypewriterText, FadeInSection } from "@/components/animated-text"
 
 export default function DefiLendingPage() {
@@ -44,6 +45,12 @@ export default function DefiLendingPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <VideoBackground
+        src="/api/placeholder/1920/1080"
+        overlay="light"
+        className="absolute inset-0 z-0"
+      />
+      
       <header className="fixed top-0 w-full header-glass z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -56,56 +63,59 @@ export default function DefiLendingPage() {
                 className="object-cover"
               />
             </div>
-            <span className="text-xl font-bold trust-gradient neon-text">Kredi</span>
+            <span className="text-xl font-bold trust-gradient modern-text-shadow">Kredi</span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <button
               onClick={() => scrollToSection("benefits")}
-              className="text-sm hover:text-primary transition-colors hover:neon-text"
+              className="text-sm hover:text-blue-600 transition-colors font-medium text-stone-700 dark:text-stone-300"
             >
               Benefits
             </button>
             <button
               onClick={() => scrollToSection("requirements")}
-              className="text-sm hover:text-primary transition-colors hover:neon-text"
+              className="text-sm hover:text-blue-600 transition-colors font-medium text-stone-700 dark:text-stone-300"
             >
               Requirements
             </button>
             <button
               onClick={() => scrollToSection("register")}
-              className="text-sm hover:text-primary transition-colors hover:neon-text"
+              className="text-sm hover:text-blue-600 transition-colors font-medium text-stone-700 dark:text-stone-300"
             >
               Get Started
             </button>
           </nav>
-          <Button
-            onClick={() => scrollToSection("register")}
-            className="btn-primary enhanced-glow"
-          >
-            Register Now
-          </Button>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <Button
+              onClick={() => scrollToSection("register")}
+              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+            >
+              Register Now
+            </Button>
+          </div>
         </div>
       </header>
 
-      {/* Hero Section with Video Background */}
+      {/* Hero Section with Video Background - Centered */}
       <VideoBackground 
-        src="/hero-video.mp4" 
-        className="pt-20 pb-16 px-4 min-h-screen flex items-center"
-        overlay="gradient"
+        src="/home.mp4" 
+        className="pt-20 pb-16 px-4 min-h-screen flex items-center justify-center"
+        overlay="light"
       >
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-8">
             <div className="space-y-6">
               <AnimatedText direction="up" delay={0.2}>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-balance text-white neon-text">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-balance text-stone-800 dark:text-stone-100 modern-text-shadow">
                   Build Your Credit, <span className="trust-gradient">Secure Your Future</span>
                 </h1>
               </AnimatedText>
               
               <AnimatedText direction="up" delay={0.5}>
-                <p className="text-xl md:text-2xl text-gray-200 text-pretty max-w-3xl mx-auto">
-                  Decentralized, transparent, and community-driven loans. Start small, grow your reputation, and access
-                  better rates through peer-to-peer lending.
+                <p className="text-xl md:text-2xl text-stone-700 dark:text-stone-200 text-pretty max-w-3xl mx-auto font-medium modern-text-shadow">
+                  Kredi provides transparent, community-backed loans. Start small, grow your reputation, and access
+                  better rates through Kredi's lending platform.
                 </p>
               </AnimatedText>
             </div>
@@ -119,9 +129,9 @@ export default function DefiLendingPage() {
                   <Button
                     onClick={() => scrollToSection("register")}
                     size="lg"
-                    className="btn-primary enhanced-glow text-lg px-8 py-6"
+                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    Register Now
+                    Get Started Now
                   </Button>
                 </motion.div>
                 <motion.div
@@ -132,7 +142,7 @@ export default function DefiLendingPage() {
                     onClick={() => scrollToSection("benefits")}
                     variant="outline"
                     size="lg"
-                    className="glass-card border-white/30 hover:bg-white/10 text-white text-lg px-8 py-6 enhanced-glow"
+                    className="border-2 border-blue-600 text-blue-700 hover:bg-blue-50 dark:hover:bg-blue-900/30 backdrop-blur-sm bg-stone-50/80 dark:bg-gray-800/80 dark:text-blue-400 text-lg px-8 py-6 font-semibold rounded-xl transition-all duration-300"
                   >
                     Learn More
                   </Button>
@@ -141,26 +151,26 @@ export default function DefiLendingPage() {
             </AnimatedText>
 
             <AnimatedText direction="fade" delay={1.1}>
-              <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-300">
+              <div className="flex flex-wrap justify-center gap-6 text-sm text-stone-700 dark:text-stone-300">
                 <motion.div 
                   className="flex items-center gap-2 glass-card px-4 py-2 rounded-full"
                   whileHover={{ scale: 1.1, y: -2 }}
                 >
-                  <CheckCircle className="h-4 w-4 text-secondary" />
+                  <CheckCircle className="h-4 w-4 text-green-600" />
                   <span>Self-custodied wallets</span>
                 </motion.div>
                 <motion.div 
                   className="flex items-center gap-2 glass-card px-4 py-2 rounded-full"
                   whileHover={{ scale: 1.1, y: -2 }}
                 >
-                  <CheckCircle className="h-4 w-4 text-secondary" />
+                  <CheckCircle className="h-4 w-4 text-green-600" />
                   <span>On-chain reputation</span>
                 </motion.div>
                 <motion.div 
                   className="flex items-center gap-2 glass-card px-4 py-2 rounded-full"
                   whileHover={{ scale: 1.1, y: -2 }}
                 >
-                  <CheckCircle className="h-4 w-4 text-secondary" />
+                  <CheckCircle className="h-4 w-4 text-green-600" />
                   <span>Community-powered</span>
                 </motion.div>
               </div>
@@ -169,17 +179,17 @@ export default function DefiLendingPage() {
         </div>
       </VideoBackground>
 
-      <section id="benefits" className="py-16 px-4 bg-muted/50">
+      <section id="benefits" className="py-16 px-4 benefits-section bg-transparent dark:bg-gray-900/50">
         <div className="container mx-auto max-w-6xl">
           <FadeInSection className="text-center mb-12">
             <TypewriterText 
               text="Why Choose Kredi?" 
-              className="text-3xl md:text-4xl font-bold mb-4"
+              className="text-3xl md:text-4xl font-bold mb-4 text-stone-800 dark:text-stone-100"
               delay={0.2}
               speed={0.05}
             />
             <AnimatedText direction="up" delay={0.8}>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-xl text-stone-600 dark:text-stone-300">
                 Experience the future of lending with blockchain-powered transparency
               </p>
             </AnimatedText>
@@ -190,29 +200,29 @@ export default function DefiLendingPage() {
               {
                 icon: Shield,
                 title: "Secure & Transparent",
-                description: "On-chain reputation protects users and ensures fairness in every transaction",
-                color: "primary",
+                description: "Kredi's on-chain system protects users and ensures fairness in every transaction",
+                color: "blue",
                 delay: 0.1
               },
               {
                 icon: Activity,
                 title: "Accessible",
-                description: "Start with small loans and grow as you build your lending history",
-                color: "secondary",
+                description: "Start with small loans from Kredi and grow as you build your lending history",
+                color: "cyan",
                 delay: 0.2
               },
               {
                 icon: Clock,
                 title: "Fast & Simple",
-                description: "Register, verify, and request your first loan in minutes",
-                color: "primary",
+                description: "Register, verify, and request your Kredi loan in minutes",
+                color: "emerald",
                 delay: 0.3
               },
               {
                 icon: Users,
                 title: "Community-Powered",
-                description: "Your activity and peers strengthen your creditworthiness",
-                color: "secondary",
+                description: "Community backing strengthens Kredi's lending decisions and your creditworthiness",
+                color: "indigo",
                 delay: 0.4
               }
             ].map((benefit, index) => (
@@ -234,14 +244,14 @@ export default function DefiLendingPage() {
                 <Card className="glass-card card-hover text-center h-full">
                   <CardContent className="p-6">
                     <motion.div 
-                      className={`bg-${benefit.color}/20 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center ring-1 ring-${benefit.color}/30`}
+                      className={`bg-${benefit.color}-100 dark:bg-${benefit.color}-900/30 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center ring-2 ring-${benefit.color}-200 dark:ring-${benefit.color}-700`}
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
                     >
-                      <benefit.icon className={`h-8 w-8 text-${benefit.color}`} />
+                      <benefit.icon className={`h-8 w-8 text-${benefit.color}-600 dark:text-${benefit.color}-400`} />
                     </motion.div>
-                    <h3 className="font-semibold mb-2 text-white">{benefit.title}</h3>
-                    <p className="text-sm text-gray-400">
+                    <h3 className="font-semibold mb-2 text-stone-800 dark:text-stone-100">{benefit.title}</h3>
+                    <p className="text-sm text-stone-600 dark:text-stone-300">
                       {benefit.description}
                     </p>
                   </CardContent>
@@ -252,120 +262,272 @@ export default function DefiLendingPage() {
         </div>
       </section>
 
-      <section id="requirements" className="py-16 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <FadeInSection className="text-center mb-12">
+      <section className="py-16 px-4 bg-gradient-to-br from-stone-50 to-stone-100 dark:from-stone-900/20 dark:to-stone-800/20">
+        <div className="container mx-auto max-w-6xl">
+          <FadeInSection className="text-center mb-16">
             <AnimatedText direction="up">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Requirements for Your First Loan</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-stone-800 dark:text-stone-100">Our Value Proposition</h2>
             </AnimatedText>
             <AnimatedText direction="up" delay={0.3}>
-              <p className="text-xl text-muted-foreground">Simple steps to get started with decentralized lending</p>
+              <p className="text-xl text-stone-600 dark:text-stone-300">
+                Six key benefits that make Kredi the future of lending
+              </p>
             </AnimatedText>
           </FadeInSection>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <FadeInSection delay={0.2}>
-              <motion.div whileHover={{ scale: 1.02 }}>
-                <Card className="glass-card card-hover h-full">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {[
+              {
+                title: "Accessible Micro-Loans",
+                description: "Start small, grow with repayment history.",
+                icon: "💰",
+                delay: 0.1
+              },
+              {
+                title: "On-Chain Credit Score",
+                description: "Build transparent and portable reputation.",
+                icon: "📊",
+                delay: 0.2
+              },
+              {
+                title: "Lower Interest Rates",
+                description: "Fair alternatives to abusive informal lending (fixed fees).",
+                icon: "📉",
+                delay: 0.3
+              },
+              {
+                title: "Financial Inclusion",
+                description: "Unlock access to savings, credit, and investment tools.",
+                icon: "🏦",
+                delay: 0.4
+              },
+              {
+                title: "Blockchain Gateway",
+                description: "First step for excluded users into the digital economy.",
+                icon: "🔗",
+                delay: 0.5
+              },
+              {
+                title: "Trust & Transparency",
+                description: "Clear terms, no hidden fees, community-powered credibility.",
+                icon: "🛡️",
+                delay: 0.6
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: item.delay,
+                  ease: "easeOut"
+                }}
+                whileHover={{ 
+                  scale: 1.05,
+                  transition: { duration: 0.2 }
+                }}
+              >
+                <Card className="glass-card card-hover text-center h-full bg-stone-100/80 dark:bg-stone-900/30 border-stone-200 dark:border-stone-700">
                   <CardContent className="p-6">
-                    <div className="space-y-4">
-                      <motion.div 
-                        className="flex items-start gap-3"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.4 }}
-                      >
-                        <div className="bg-primary/20 p-2 rounded-full flex-shrink-0 ring-1 ring-primary/30">
-                          <Activity className="h-4 w-4 text-primary" />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold mb-1 text-white">Minimum 3 months of activity</h3>
-                          <p className="text-sm text-gray-400">
-                            Build your on-chain reputation through consistent platform engagement
-                          </p>
-                        </div>
-                      </motion.div>
+                    <motion.div 
+                      className="text-4xl mb-4"
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {item.icon}
+                    </motion.div>
+                    <h3 className="font-bold mb-3 text-lg text-stone-800 dark:text-stone-100">{item.title}</h3>
+                    <p className="text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
 
+          <FadeInSection delay={0.8}>
+            <motion.div 
+              className="text-center"
+              whileHover={{ scale: 1.02 }}
+            >
+              <Card className="glass-card bg-gradient-to-r from-stone-200/50 to-stone-300/50 dark:from-stone-800/30 dark:to-stone-900/30 border-stone-300 dark:border-stone-600 max-w-2xl mx-auto">
+                <CardContent className="p-8">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 1.0 }}
+                    className="text-3xl mb-4"
+                  >
+                    🎯
+                  </motion.div>
+                  <h3 className="text-2xl font-bold mb-4 trust-gradient">Building Financial Futures</h3>
+                  <p className="text-lg text-stone-700 dark:text-stone-200">
+                    Kredi transforms how people access credit by combining blockchain transparency 
+                    with community trust, creating opportunities for financial growth and inclusion.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </FadeInSection>
+        </div>
+      </section>
+
+      <section id="requirements" className="py-20 px-4 requirements-section bg-transparent dark:bg-gray-900/50">
+        <div className="container mx-auto max-w-6xl">
+          <FadeInSection className="text-center mb-16">
+            <AnimatedText direction="up">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-stone-800 dark:text-stone-100">Requirements for Your First Loan</h2>
+            </AnimatedText>
+            <AnimatedText direction="up" delay={0.3}>
+              <p className="text-xl text-stone-600 dark:text-stone-300 max-w-2xl mx-auto">
+                Simple and transparent steps to get started with Kredi lending - build your reputation step by step
+              </p>
+            </AnimatedText>
+          </FadeInSection>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <FadeInSection delay={0.2}>
+              <motion.div whileHover={{ scale: 1.05, y: -5 }} className="h-full">
+                <Card className="glass-card card-hover text-center h-full flex flex-col">
+                  <CardContent className="p-8 flex-1 flex flex-col justify-between">
+                    <div className="flex flex-col items-center">
                       <motion.div 
-                        className="flex items-start gap-3"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.6 }}
+                        className="bg-blue-100 dark:bg-blue-900/30 p-6 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center ring-4 ring-blue-200 dark:ring-blue-700"
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
                       >
-                        <div className="bg-secondary/20 p-2 rounded-full flex-shrink-0 ring-1 ring-secondary/30">
-                          <Users className="h-4 w-4 text-secondary" />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold mb-1 text-white">Diversified transactions</h3>
-                          <p className="text-sm text-gray-400">
-                            Interact with multiple peers to demonstrate trustworthiness
-                          </p>
-                        </div>
+                        <Activity className="h-10 w-10 text-blue-600" />
                       </motion.div>
+                      <h3 className="text-xl font-bold mb-4 text-stone-800 dark:text-stone-100 min-h-[3rem] flex items-center">3 Months Activity</h3>
                     </div>
+                    <p className="text-stone-600 dark:text-stone-300 leading-relaxed flex-1 flex items-center">
+                      Build your reputation with Kredi through consistent platform engagement and transactions
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
             </FadeInSection>
 
             <FadeInSection delay={0.4}>
-              <motion.div whileHover={{ scale: 1.02 }}>
-                <Card className="glass-card card-hover h-full">
-                  <CardContent className="p-6">
-                    <div className="space-y-4">
+              <motion.div whileHover={{ scale: 1.05, y: -5 }} className="h-full">
+                <Card className="glass-card card-hover text-center h-full flex flex-col">
+                  <CardContent className="p-8 flex-1 flex flex-col justify-between">
+                    <div className="flex flex-col items-center">
                       <motion.div 
-                        className="flex items-start gap-3"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.8 }}
+                        className="bg-cyan-100 dark:bg-cyan-900/30 p-6 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center ring-4 ring-cyan-200 dark:ring-cyan-700"
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
                       >
-                        <div className="bg-primary/20 p-2 rounded-full flex-shrink-0 ring-1 ring-primary/30">
-                          <Wallet className="h-4 w-4 text-primary" />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold mb-1 text-white">Small initial amounts</h3>
-                          <p className="text-sm text-gray-400">
-                            Start with micro-loans to build trust and unlock larger amounts
-                          </p>
-                        </div>
+                        <Users className="h-10 w-10 text-cyan-600" />
                       </motion.div>
-
-                      <motion.div 
-                        className="flex items-start gap-3"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 1.0 }}
-                      >
-                        <div className="bg-secondary/20 p-2 rounded-full flex-shrink-0 ring-1 ring-secondary/30">
-                          <UserCheck className="h-4 w-4 text-secondary" />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold mb-1 text-white">Identity verification</h3>
-                          <p className="text-sm text-gray-400">Complete KYC and liveness check for security</p>
-                        </div>
-                      </motion.div>
+                      <h3 className="text-xl font-bold mb-4 text-stone-800 dark:text-stone-100 min-h-[3rem] flex items-center">Diversified Transactions</h3>
                     </div>
+                    <p className="text-stone-600 dark:text-stone-300 leading-relaxed flex-1 flex items-center">
+                      Multiple platform interactions help Kredi evaluate your creditworthiness and reliability
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </FadeInSection>
+
+            <FadeInSection delay={0.6}>
+              <motion.div whileHover={{ scale: 1.05, y: -5 }} className="h-full">
+                <Card className="glass-card card-hover text-center h-full flex flex-col">
+                  <CardContent className="p-8 flex-1 flex flex-col justify-between">
+                    <div className="flex flex-col items-center">
+                      <motion.div 
+                        className="bg-emerald-100 dark:bg-emerald-900/30 p-6 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center ring-4 ring-emerald-200 dark:ring-emerald-700"
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
+                      >
+                        <Wallet className="h-10 w-10 text-emerald-600" />
+                      </motion.div>
+                      <h3 className="text-xl font-bold mb-4 text-stone-800 dark:text-stone-100 min-h-[3rem] flex items-center">Start Small</h3>
+                    </div>
+                    <p className="text-stone-600 dark:text-stone-300 leading-relaxed flex-1 flex items-center">
+                      Begin with micro-loans from Kredi to build trust and progressively unlock larger amounts
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </FadeInSection>
+
+            <FadeInSection delay={0.8}>
+              <motion.div whileHover={{ scale: 1.05, y: -5 }} className="h-full">
+                <Card className="glass-card card-hover text-center h-full flex flex-col">
+                  <CardContent className="p-8 flex-1 flex flex-col justify-between">
+                    <div className="flex flex-col items-center">
+                      <motion.div 
+                        className="bg-indigo-100 dark:bg-indigo-900/30 p-6 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center ring-4 ring-indigo-200 dark:ring-indigo-700"
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
+                      >
+                        <UserCheck className="h-10 w-10 text-indigo-600" />
+                      </motion.div>
+                      <h3 className="text-xl font-bold mb-4 text-stone-800 dark:text-stone-100 min-h-[3rem] flex items-center">Identity Verification</h3>
+                    </div>
+                    <p className="text-stone-600 dark:text-stone-300 leading-relaxed flex-1 flex items-center">
+                      Complete KYC and liveness verification for security and regulatory compliance
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
             </FadeInSection>
           </div>
+
+          <FadeInSection delay={1.0}>
+            <motion.div 
+              className="text-center"
+              whileHover={{ scale: 1.02 }}
+            >
+              <Card className="glass-card bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-blue-200 dark:border-blue-700 max-w-4xl mx-auto">
+                <CardContent className="p-8">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 1.2 }}
+                    className="text-4xl mb-6"
+                  >
+                    🚀
+                  </motion.div>
+                  <h3 className="text-2xl font-bold mb-4 trust-gradient">Ready to Get Started?</h3>
+                  <p className="text-lg text-stone-700 dark:text-stone-200 mb-6 max-w-2xl mx-auto">
+                    Once you meet these requirements, you'll be ready to access Kredi's lending platform 
+                    and start building your financial future with transparent, blockchain-powered loans.
+                  </p>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button
+                      onClick={() => scrollToSection("register")}
+                      size="lg"
+                      className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-10 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                    >
+                      Start Your Journey
+                    </Button>
+                  </motion.div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </FadeInSection>
         </div>
       </section>
 
-      <section id="register" className="py-16 px-4 bg-muted/50">
+      <section id="register" className="py-16 px-4 register-section bg-transparent dark:bg-gray-900/50">
         <div className="container mx-auto max-w-2xl">
           <FadeInSection className="text-center mb-12">
             <AnimatedText direction="up">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Start Building Your Reputation</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-stone-800 dark:text-stone-100">Start Building Your Reputation</h2>
             </AnimatedText>
             <AnimatedText direction="up" delay={0.3}>
-              <p className="text-xl text-muted-foreground">
-                Join our decentralized lending community and take control of your financial future
+              <p className="text-xl text-stone-600 dark:text-stone-300">
+                Join Kredi's lending community and take control of your financial future
               </p>
             </AnimatedText>
           </FadeInSection>
@@ -389,13 +551,13 @@ export default function DefiLendingPage() {
                         placeholder="Full Name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className={`bg-slate-800/50 border-slate-600 text-white placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 ${errors.name ? "border-destructive" : ""}`}
+                        className={`modern-input border-stone-300 dark:border-gray-600 text-stone-800 dark:text-stone-100 placeholder:text-stone-500 dark:placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500/20 ${errors.name ? "border-red-500" : ""}`}
                         aria-describedby={errors.name ? "name-error" : undefined}
                       />
                       {errors.name && (
                         <motion.p 
                           id="name-error" 
-                          className="text-sm text-destructive mt-1" 
+                          className="text-sm text-red-600 mt-1" 
                           aria-live="polite"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
@@ -416,7 +578,7 @@ export default function DefiLendingPage() {
                         placeholder="Email Address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className={`bg-slate-800/50 border-slate-600 text-white placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 ${errors.email ? "border-destructive" : ""}`}
+                        className={`modern-input border-stone-300 dark:border-gray-600 text-stone-800 dark:text-stone-100 placeholder:text-stone-500 dark:placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500/20 ${errors.email ? "border-red-500" : ""}`}
                         aria-describedby={errors.email ? "email-error" : undefined}
                       />
                       {errors.email && (
@@ -433,19 +595,19 @@ export default function DefiLendingPage() {
                     </motion.div>
 
                     <motion.div 
-                      className="bg-slate-800/30 p-4 rounded-lg border border-slate-600/50"
+                      className="bg-stone-50 dark:bg-gray-800 p-4 rounded-lg border border-stone-200 dark:border-gray-600"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 1.1 }}
                     >
                       <div className="flex items-start gap-3">
-                        <Shield className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
+                        <Shield className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                         <div>
-                          <h3 className="font-semibold text-sm mb-1 text-white">Your information is secure</h3>
-                          <p className="text-xs text-gray-400">
-                            Your wallet is self-custodied and your data is encrypted. We never have access to your private
-                            keys.
+                          <h3 className="font-semibold text-sm mb-1 text-gray-800 dark:text-gray-100">Your information is secure</h3>
+                          <p className="text-xs text-gray-600 dark:text-gray-300">
+                            Your wallet is self-custodied and your data is encrypted. We never have access to your
+                            private keys.
                           </p>
                         </div>
                       </div>
@@ -461,7 +623,7 @@ export default function DefiLendingPage() {
                     >
                       <Button
                         type="submit"
-                        className="w-full btn-primary enhanced-glow text-lg py-6"
+                        className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-lg py-6 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                       >
                         Start Building Your Reputation
                       </Button>
@@ -491,7 +653,7 @@ export default function DefiLendingPage() {
                 <span className="font-bold trust-gradient">Kredi</span>
               </div>
               <p className="text-sm text-gray-400">
-                Decentralized micro-lending powered by community trust and blockchain transparency.
+                Kredi's micro-lending powered by community trust and blockchain transparency.
               </p>
             </div>
 

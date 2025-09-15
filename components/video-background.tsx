@@ -13,20 +13,20 @@ export function VideoBackground({
   src, 
   className = "", 
   children, 
-  overlay = "dark" 
+  overlay = "light" 
 }: VideoBackgroundProps) {
   const getOverlayClass = () => {
     switch (overlay) {
       case "light":
-        return "bg-white/20"
+        return "bg-white/30 dark:bg-black/50"
       case "dark":
-        return "bg-black/50"
+        return "bg-black/50 dark:bg-black/70"
       case "gradient":
-        return "bg-gradient-to-t from-black/80 via-black/40 to-black/60"
+        return "bg-gradient-to-t from-white/70 via-white/30 to-white/50 dark:from-black/70 dark:via-black/30 dark:to-black/50"
       case "none":
         return ""
       default:
-        return "bg-black/50"
+        return "bg-white/30 dark:bg-black/50"
     }
   }
 
@@ -40,7 +40,7 @@ export function VideoBackground({
           loop
           playsInline
           className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto transform -translate-x-1/2 -translate-y-1/2 object-cover"
-          style={{ filter: "brightness(0.7) contrast(1.1)" }}
+          style={{ filter: "brightness(1.1) contrast(0.9) saturate(1.2)" }}
         >
           <source src={src} type="video/mp4" />
           <source src={src.replace('.mp4', '.webm')} type="video/webm" />
@@ -52,15 +52,19 @@ export function VideoBackground({
         <div className={`absolute inset-0 ${getOverlayClass()}`} />
         
         {/* Gradient Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-white/20 dark:from-black/60 dark:via-transparent dark:to-black/20" />
         
         {/* Ambient light effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-emerald-500/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-500/10 dark:from-blue-400/20 dark:via-transparent dark:to-cyan-400/20" />
         
-        {/* Vignette effect */}
-        <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/40" 
+        {/* Subtle vignette effect */}
+        <div className="absolute inset-0" 
              style={{
-               background: 'radial-gradient(ellipse at center, transparent 0%, transparent 60%, rgba(0,0,0,0.4) 100%)'
+               background: 'radial-gradient(ellipse at center, transparent 0%, transparent 70%, rgba(226, 232, 240, 0.3) 100%)'
+             }} />
+        <div className="absolute inset-0 dark:block hidden" 
+             style={{
+               background: 'radial-gradient(ellipse at center, transparent 0%, transparent 70%, rgba(17, 24, 39, 0.5) 100%)'
              }} />
       </div>
       
