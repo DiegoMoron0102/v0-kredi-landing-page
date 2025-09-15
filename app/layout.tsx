@@ -1,31 +1,36 @@
 import type { Metadata } from "next"
 import type React from "react"
 import "./globals.css"
-import RootLayout from "./page"
 
 export const metadata: Metadata = {
-  title: "Kredi - Préstamos claros. Sin letra chica.",
+  title: "Kredi - Build Your Credit, Secure Your Future",
   description:
-    "Simula, entiende y acepta con transparencia total antes de desembolsar. Préstamos responsables con Kredi.",
+    "Decentralized, transparent, and community-driven loans. Start small, grow your reputation, and access better rates through peer-to-peer lending.",
   generator: "Kredi",
-  keywords: "préstamos, crédito, transparencia, simulador, fintech",
+  keywords: "defi, loans, credit, blockchain, peer-to-peer, lending",
   openGraph: {
-    title: "Kredi - Préstamos claros. Sin letra chica.",
-    description: "Simula, entiende y acepta con transparencia total antes de desembolsar.",
+    title: "Kredi - Build Your Credit, Secure Your Future",
+    description: "Decentralized, transparent, and community-driven loans.",
     type: "website",
-    locale: "es_ES",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kredi - Préstamos claros. Sin letra chica.",
-    description: "Simula, entiende y acepta con transparencia total antes de desembolsar.",
+    title: "Kredi - Build Your Credit, Secure Your Future",
+    description: "Decentralized, transparent, and community-driven loans.",
   },
 }
 
-export default function Layout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return <RootLayout>{children}</RootLayout>
+  return (
+    <html lang="en">
+      <body>
+        {children}
+      </body>
+    </html>
+  )
 }
