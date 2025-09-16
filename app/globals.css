@@ -38,6 +38,17 @@
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #e3ddd6;
   --sidebar-ring: rgba(59, 130, 246, 0.5);
+
+  --font-size-base: 1.40rem;         /* 16px, texto general */
+  --font-size-title: 7.5rem;      /* 40px, títulos principales */
+  --font-size-subtitle: 1.75rem;  /* 28px, subtítulos */
+  --font-size-paragraph: 1.60rem;    /* 16px, párrafos */
+  --font-size-button: 1.25rem;   /* 18px, botones */
+  --font-size-input: 1.125rem;    /* 18px, inputs */
+  --font-size-nav: 1.125rem;      /* 18px, navegación */
+  --font-size-card-title: 1.75rem; /* 24px, títulos de cards */
+  --font-size-card-text: 1rem;    /* 16px, texto de cards */
+  --font-size-footer: 0.875rem;   /* 14px, texto footer */
 }
 
 .dark {
@@ -469,7 +480,7 @@ p {
 }
 
 span {
-  color: inherit;
+  font-size: var(--font-size-base);
 }
 
 /* Button text visibility */
@@ -589,4 +600,36 @@ svg[class*="text-green-600"] {
   color: #16a34a !important;
   stroke: #16a34a !important;
   fill: none !important;
+}
+
+/* Ejemplo de uso para cada elemento */
+body, p {
+  font-size: var(--font-size-base);
+}
+h1, .title-main {
+  font-size: var(--font-size-title);
+}
+h2, .subtitle-main {
+  font-size: var(--font-size-subtitle);
+}
+p, .paragraph-main {
+  font-size: var(--font-size-paragraph);
+}
+button, .btn-primary {
+  font-size: var(--font-size-button);
+}
+input, textarea, .modern-input {
+  font-size: var(--font-size-input);
+}
+nav button, .nav-link {
+  font-size: var(--font-size-nav);
+}
+.card-title, h3 {
+  font-size: var(--font-size-card-title);
+}
+.card-text, .card-content, .glass-card {
+  font-size: var(--font-size-card-text);
+}
+.footer-glass, .footer-text {
+  font-size: var(--font-size-footer);
 }
